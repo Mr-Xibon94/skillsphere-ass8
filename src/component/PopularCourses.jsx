@@ -1,4 +1,4 @@
-import React from 'react';
+
 import AllCourseCard from './AllCourseCards';
 
 const PopularCourses = async () => {

@@ -1,6 +1,6 @@
 import { Button } from '@heroui/react';
 import Link from 'next/link';
-import React from 'react';
+
 
 const Navbar = () => {
     return (
@@ -13,7 +13,7 @@ const Navbar = () => {
                 <div className='flex-1 space-x-2.5 text-[16px] font-medium'>
                     <Link href="./"><span className="text-[#4f46e5]" >Home</span></Link>
                     <Link href="./AllCourses"><span className="text-[#4f46e5]" >All Courses</span></Link>
-                    <Link href="./profile"><span className="text-[#4f46e5]">My Profile</span></Link>
+                    <Link href="./MyProfile"><span className="text-[#4f46e5]">My Profile</span></Link>
                 </div>
 
                 {/* search bar and profile   */}
@@ -47,7 +47,7 @@ const Navbar = () => {
                     </div>
                     <div className='flex gap-1.5'>
                             <Button variant='outline' className="text-[#4f46e5]">Log In</Button>
-                            <Button variant='outline' className="text-[#4f46e5]">Sigh UP</Button>
+                           <Link href="./SignUp"> <Button variant='outline' className="text-[#4f46e5]">Sigh UP</Button></Link>
                         </div>
                 </div>
             </div>

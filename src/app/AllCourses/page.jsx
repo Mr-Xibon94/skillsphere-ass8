@@ -1,0 +1,23 @@
+import React from 'react';
+import CourseDetails from './[CourseDetails]/page';
+import AllCourseCard from '@/component/AllCourseCards';
+
+const AllCourses = async () => {
+    const res = await fetch('https://skillsphere-server-irgj.onrender.com/data')
+    const courses = await res.json()
+    console.log(courses)
+    return (
+        <div className='my-5 w-[80%] mx-auto'>
+            <h1 className='text-2xl font-semibold'>Choose Your Course:</h1>
+            <div className='grid grid-cols-3 gap-6  mt-2.5'>
+                {
+                    courses.map(course =>
+                        <AllCourseCard key={course.id} course={course}></AllCourseCard>
+                    )
+                }
+            </div>
+        </div>
+    );
+};
+
+export default AllCourses;

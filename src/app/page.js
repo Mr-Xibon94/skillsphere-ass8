@@ -1,9 +1,11 @@
 
+import PopularCourses from "@/component/PopularCourses";
+
 
 const HomePage = () => {
  return (
     <div>
-      
+     <PopularCourses/>
     </div>
   );
 };

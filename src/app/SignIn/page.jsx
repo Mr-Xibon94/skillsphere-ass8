@@ -1,5 +1,5 @@
 "use client";
-import { authClient } from "@/lib/auth-client"; 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
     Button,
@@ -11,44 +11,33 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
-import { useRouter } from "next/navigation";
 
-export default function SignUp() {
-
-    const router = useRouter();
+export default function SignIpPage() {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        console.log('submit button is cliecked')
+        console.log('submit button is clickked')
 
-        const name = e.target.name.value;
+
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name , email, password) 
-        const { data, error } = await authClient.signUp.email({
-            name,
+        // console.log(name , email, password) 
+        const { data, error } = await authClient.signIn.email({
             email,
             password,
+            callbackURL: '/'
         })
         console.log({ data, error })
-
-        if (!error) {
-            router.push('/');
-        }
     };
 
     return (
-        <Card className="border mx-auto w-125 py-10 my-5">
-            <h1 className="text-center text-2xl font-bold">Sign Up</h1>
+        <Card className="border mx-auto w-125 py-10 mt-5">
+            <h1 className="text-center text-2xl font-bold">Sign In</h1>
 
             <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
-                <TextField isRequired name="name" type="text">
-                    <Label>Name</Label>
-                    <Input placeholder="Enter your name" />
-                    <FieldError />
-                </TextField>
 
-               
+
+
                 <TextField
                     isRequired
                     name="email"
@@ -94,7 +83,7 @@ export default function SignUp() {
                 </TextField>
 
                 <div className="flex gap-2">
-                    <Button variant="outline" type="submit">
+                    <Button type="submit">
                         <Check />
                         Submit
                     </Button>

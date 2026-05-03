@@ -1,8 +1,19 @@
+"use client"
+import { authClient } from '@/lib/auth-client';
 import { Button } from '@heroui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 const Navbar = () => {
+    const router = useRouter()
+    const userData = authClient.useSession()
+    const user = userData.data?.user
+
+    const handleSignOut = async () => {
+        await authClient.signOut();
+        router.push('/')
+    }
     return (
         <div className='w-[80%] mx-auto' >
             <div className="navbar bg-base-100 shadow-sm " >
@@ -40,15 +51,22 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li><span onClick={handleSignOut}>LogOut</span></li>
                         </ul>
 
-                        
                     </div>
-                    <div className='flex gap-1.5'>
-                            <Button variant='outline' className="text-[#4f46e5]">Log In</Button>
-                           <Link href="./SignUp"> <Button variant='outline' className="text-[#4f46e5]">Sigh UP</Button></Link>
-                        </div>
+
+                    <div>
+                        {
+                            !user &&
+                            <div className='flex gap-1.5'>
+                                <Link href="./SignIn">
+                                    <Button variant='outline' className="text-[#4f46e5]">Log In</Button>
+                                </Link>
+                                <Link href="./SignUp"> <Button variant='outline' className="text-[#4f46e5]">Sigh UP</Button></Link>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

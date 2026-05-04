@@ -56,8 +56,7 @@ const CourseDetails = async ({ params }) => {
 
                     </div>
                 </div>
-
-                <div className="flex space-x-5 mt-10">
+                <div className="flex flex-col space-y-3.5 md:flex-row md:space-x-3.5 mt-5">
                     <Button variant="outline" className="w-full">Enroll Now</Button>
                     <Button variant="outline" className="w-full"> <Heart /> Add to Wishlist</Button>
 

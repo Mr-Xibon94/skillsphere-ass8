@@ -6,10 +6,10 @@ import { FcRating } from "react-icons/fc";
 
 
 const AllCourseCard = ({ course }) => {
-    console.log(course, 'here it isssssssss')
+    
     return (
-        <Card className="border rounded-xl">
-            <div className="relative w-full aspect-square">
+        <Card className="border rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
+            <div className="relative aspect-square w-full rounded-xl">
                 <Image
                 src={course.image}
                 fill
@@ -18,15 +18,15 @@ const AllCourseCard = ({ course }) => {
                 />
             </div>
 
-            <div>
-                <h2 className="font-medium text-2xl">{course.title}</h2>
+            <div className="">
+                <h2 className="font-medium text-2xl text-white" >{course.title}</h2>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between text-white">
                 <h2 className="text-x font-semibold">{course.instructor}</h2>
                 <p className="font-semibold flex gap-1.5 "> <span className="flex flex-row items-center"><FcRating/> </span> {course.rating}</p>
             </div>
             <Link href={`./AllCourses/${course.id}`}>
-            <Button variant="outline" className="w-full" >Details</Button>
+            <Button variant="outline" className="w-full bg-white text-xl font-semibold text-[#4f46e5] hover:text-white hover:bg-[#4f46e5]" >Details</Button>
             </Link>
         </Card>
     );

@@ -6,6 +6,9 @@ const nextConfig = {
     remotePatterns: [
       {
         hostname:'cdn.jsdeliver.net'
+      },
+      {
+        hostname:"i.ibb.co.com"
       }
     ]
   }

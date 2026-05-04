@@ -15,8 +15,8 @@ const Navbar = () => {
         router.push('/')
     }
     return (
-        <div className='w-[80%] mx-auto' >
-            <div className="navbar bg-base-100 shadow-sm " >
+        <div className='w-[80%] mx-auto ' >
+            <div className="navbar bg-base-100 shadow-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" >
                 <div className="flex-1">
                     <h1 className="font-bold text-2xl text-[#4f46e5]">SkillSphere</h1>
                 </div>

@@ -1,10 +1,12 @@
 
+import Banner from "@/component/Banner";
 import PopularCourses from "@/component/PopularCourses";
 
 
 const HomePage = () => {
  return (
     <div>
+      <Banner/>
      <PopularCourses/>
     </div>
   );

@@ -3,7 +3,7 @@ import CourseDetails from './[CourseDetails]/page';
 import AllCourseCard from '@/component/AllCourseCards';
 
 const AllCourses = async () => {
-    const res = await fetch('https://skillsphere-server-irgj.onrender.com/data')
+    const res = await fetch('https://skillsphere-server-irgj.onrender.com/data', { cache: "no-store" })
     const courses = await res.json()
     console.log(courses)
     return (

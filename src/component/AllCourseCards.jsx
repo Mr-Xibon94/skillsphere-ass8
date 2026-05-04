@@ -1,5 +1,7 @@
-import { Card } from "@heroui/react";
+import { Button, Card } from "@heroui/react";
 import Image from "next/image";
+import Link from "next/link";
+import { FcRating } from "react-icons/fc";
 
 
 
@@ -17,8 +19,15 @@ const AllCourseCard = ({ course }) => {
             </div>
 
             <div>
-                <h2 className="font-medium text-xl">{course.title}</h2>
+                <h2 className="font-medium text-2xl">{course.title}</h2>
             </div>
+            <div className="flex justify-between">
+                <h2 className="text-x font-semibold">{course.instructor}</h2>
+                <p className="font-semibold flex gap-1.5 "> <span className="flex flex-row items-center"><FcRating/> </span> {course.rating}</p>
+            </div>
+            <Link href={`./AllCourses/${course.id}`}>
+            <Button variant="outline" className="w-full" >Details</Button>
+            </Link>
         </Card>
     );
 };

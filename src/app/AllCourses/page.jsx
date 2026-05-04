@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseDetails from './[CourseDetails]/page';
+import CourseDetails from './[id]/page';
 import AllCourseCard from '@/component/AllCourseCards';
 
 const AllCourses = async () => {

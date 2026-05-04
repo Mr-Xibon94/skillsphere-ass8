@@ -18,13 +18,13 @@ const Navbar = () => {
         <div className='w-[80%] mx-auto' >
             <div className="navbar bg-base-100 shadow-sm " >
                 <div className="flex-1">
-                    <h1 className="font-bold text-2xl text-[#4f46e5]">SkillSpher</h1>
+                    <h1 className="font-bold text-2xl text-[#4f46e5]">SkillSphere</h1>
                 </div>
 
                 <div className='flex-1 space-x-2.5 text-[16px] font-medium'>
-                    <Link href="./"><span className="text-[#4f46e5]" >Home</span></Link>
-                    <Link href="./AllCourses"><span className="text-[#4f46e5]" >All Courses</span></Link>
-                    <Link href="./MyProfile"><span className="text-[#4f46e5]">My Profile</span></Link>
+                    <Link href="/"><span className="text-[#4f46e5]" >Home</span></Link>
+                    <Link href="/AllCourses"><span className="text-[#4f46e5]" >All Courses</span></Link>
+                    <Link href="/MyProfile"><span className="text-[#4f46e5]">My Profile</span></Link>
                 </div>
 
                 {/* search bar and profile   */}

@@ -48,7 +48,7 @@ export function UpdateProfile() {
               <Button slot="close" variant="secondary">
                 Cancel
               </Button>
-              <Button  type="submit" slot="close">Update</Button>
+              <Button  type="submit" slot="close" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700">Update</Button>
             </Modal.Footer>
                 </form>
               </Surface>

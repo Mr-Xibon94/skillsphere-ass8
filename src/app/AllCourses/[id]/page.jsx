@@ -16,10 +16,10 @@ const CourseDetails = async ({ params }) => {
 
 
     return (
-        <div className="my-4 w-[80%] mx-auto">
+        <div className="my-4 w-[80%] mx-auto shadow-2xl">
 
             <div className="rounded-xl p-15 shadow-xl" >
-                <div className="flex gap-20 justify-center ">
+                <div className="flex flex-col md:flex-row gap-20 justify-center ">
                     <div className="">
                         <Image
                             src={courseDetail.image}
@@ -35,7 +35,7 @@ const CourseDetails = async ({ params }) => {
                             <h1 className="text-xl font-medium">{courseDetail.category}</h1>
                         </div>
 
-                        <p className="text-muted">{courseDetail.description}</p>
+                        <p className="text-white">{courseDetail.description}</p>
                         <div className="flex space-x-2.5">
                             <div className="flex flex-row items-center">
                                 <Avatar >
@@ -45,7 +45,7 @@ const CourseDetails = async ({ params }) => {
                             </div>
                             <div>
                                 <h2 className="text-xl font-semibold">{courseDetail.instructor}</h2>
-                                <p className="text-xs text-muted">Instructor</p>
+                                <p className="text-xs ">Instructor</p>
                             </div>
                         </div>
 

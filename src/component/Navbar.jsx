@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 
 import { authClient } from "@/lib/auth-client";
 import { Avatar, AvatarFallback, Button } from "@heroui/react";
@@ -12,7 +11,6 @@ import { MdOutlineMenu } from "react-icons/md";
 
 const Navbar = () => {
     const router = useRouter();
-    const [open, setOpen] = useState(false);
 
     const userData = authClient.useSession();
     const user = userData.data?.user;
@@ -29,7 +27,6 @@ const Navbar = () => {
                 <div className="navbar justify-between bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-sm text-white">
 
                     {/* Mobile Menu Button */}
-
                     <div className="md:hidden dropdown dropdown-right relative">
 
                         {/* Trigger */}
@@ -38,23 +35,48 @@ const Navbar = () => {
                         </label>
 
                         {/* Menu */}
-                        <ul className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box mt-3 w-52 p-2 shadow right-0">
-                            <li>
-                                <button className="bg-white text-purple-600 py-2 rounded-lg text-xl font-semibold">
-                                    Profile
-                                </button>
-                            </li>
+                        <ul className={`menu menu-sm dropdown-content bg-base-100 text-black rounded-box mt-3 w-52 p-2 shadow right-0`}>
+                            {
+                                user && (
+                                    <div>
+                                        <li>
+                                            <Link href="/MyProfile"><button className={`text-purple-600  text-xl font-semibold `}>
+                                                Profile
+                                            </button></Link>
 
-                            <li>
-                                <button
-                                    onClick={handleSignOut}
-                                    className="bg-white text-purple-600 py-2 rounded-lg text-xl font-semibold"
-                                >
-                                    Logout
-                                </button>
-                            </li>
+                                        </li>
+
+                                        <li>
+                                            <button
+                                                onClick={handleSignOut}
+                                                className="bg-white text-purple-600 py-2 rounded-lg text-xl font-semibold"
+                                            >
+                                                Logout
+                                            </button>
+                                        </li>
+                                    </div>
+                                )
+                            }
+
+                            {
+                                !user && (
+                            <div className="flex flex-col gap-5">
+                                <Link href="/SignIn">
+                                    <Button variant="outline" className="text-indigo-600">
+                                        Log In
+                                    </Button>
+                                </Link>
+                                <Link href="/SignUp">
+                                    <Button variant="outline" className="text-indigo-600">
+                                        Sign Up
+                                    </Button>
+                                </Link>
+                            </div>
+                        )
+                            }
                         </ul>
                     </div>
+
 
 
 
@@ -113,9 +135,9 @@ const Navbar = () => {
 
                         {/* Login Buttons */}
                         {!user && (
-                            <div className="flex gap-2">
+                            <div className="flex  hidden md:block">
                                 <Link href="/SignIn">
-                                    <Button variant="outline" className="text-indigo-600">
+                                    <Button variant="outline" className="text-indigo-600 mr-5">
                                         Log In
                                     </Button>
                                 </Link>

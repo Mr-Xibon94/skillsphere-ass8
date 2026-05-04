@@ -10,7 +10,7 @@ const PopularCourses = async () => {
         <div className='my-5 w-[80%] mx-auto'>
             <h1 className='text-xl font-semibold mb-2.5'> Popular Courses :</h1>
 
-            <div className='grid grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                 {
                     popularCourses.map(pc =>
                         <AllCourseCard key={pc.id} course={pc}></AllCourseCard>

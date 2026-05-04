@@ -26,7 +26,7 @@ const AllCourseCard = ({ course }) => {
                 <p className="font-semibold flex gap-1.5 "> <span className="flex flex-row items-center"><FcRating/> </span> {course.rating}</p>
             </div>
             <Link href={`./AllCourses/${course.id}`}>
-            <Button variant="outline" className="w-full bg-white text-xl font-semibold text-[#4f46e5] hover:text-white hover:bg-[#4f46e5]" >Details</Button>
+            <Button variant="outline" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700 w-full" >Details</Button>
             </Link>
         </Card>
     );

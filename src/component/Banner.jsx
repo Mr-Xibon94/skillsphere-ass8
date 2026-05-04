@@ -26,7 +26,7 @@ const Banner = () => {
                 </div>
 
                
-                    <div className='relative w-full h-[200px] md:h-[400] lg:h-[500]  order-1 md:order-2' >
+                    <div className='relative w-full h-[200px] md:h-[400] 2xl:h-[500]  order-1 md:order-2' >
                         <Image
                             src="https://i.ibb.co.com/j9Q1RZyP/Gemini-Generated-Image-cujacocujacocuja-removebg-preview.png"
                             alt='Banner'

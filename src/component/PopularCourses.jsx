@@ -8,7 +8,7 @@ const PopularCourses = async () => {
     const popularCourses = courses.slice(0, 3)
     return (
         <div className='my-5 w-[80%] mx-auto'>
-            <h1 className='text-xl font-semibold mb-2.5'> Popular Courses :</h1>
+            <h1 className='text-3xl font-bold mb-2.5 text-white text-center'> POPULAR COURSES </h1>
 
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                 {

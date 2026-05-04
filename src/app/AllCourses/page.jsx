@@ -8,7 +8,7 @@ const AllCourses = async () => {
     console.log(courses)
     return (
         <div className='my-5 w-[80%] mx-auto'>
-            <h1 className='text-2xl font-semibold'>Choose Your Course:</h1>
+            <h1 className='text-3xl font-bold mb-2.5 text-white text-center'>CHOOSE YOUR CAREER</h1>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6  mt-2.5'>
                 {
                     courses.map(course =>

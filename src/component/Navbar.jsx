@@ -1,85 +1,136 @@
-"use client"
-import { authClient } from '@/lib/auth-client';
-import { Avatar, AvatarFallback, Button } from '@heroui/react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+
+import { authClient } from "@/lib/auth-client";
+import { Avatar, AvatarFallback, Button } from "@heroui/react";
+import { MdOutlineMenu } from "react-icons/md";
 
 
 const Navbar = () => {
-    const router = useRouter()
-    const userData = authClient.useSession()
-    const user = userData.data?.user
+    const router = useRouter();
+    const [open, setOpen] = useState(false);
+
+    const userData = authClient.useSession();
+    const user = userData.data?.user;
 
     const handleSignOut = async () => {
         await authClient.signOut();
-        router.push('/')
-    }
+        router.push("/");
+    };
+
     return (
-        <div className='w-[80%] mx-auto ' >
-            <div className="navbar bg-base-100 shadow-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" >
-                <div className="flex-1">
-                    <h1 className="font-bold text-2xl text-[#4f46e5]">SkillSphere</h1>
-                </div>
+        <>
+            {/* NAVBAR */}
+            <div className="w-[80%] mx-auto">
+                <div className="navbar justify-between bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-sm text-white">
 
-                <div className='flex-1 space-x-2.5 text-[16px] font-medium'>
-                    <Link href="/"><span className="text-[#4f46e5]" >Home</span></Link>
-                    <Link href="/AllCourses"><span className="text-[#4f46e5]" >All Courses</span></Link>
-                    <Link href="/MyProfile"><span className="text-[#4f46e5]">My Profile</span></Link>
-                </div>
+                    {/* Mobile Menu Button */}
 
-                {/* search bar and profile   */}
-                <div className="flex gap-2">
-                    {/* <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" /> */}
+                    <div className="md:hidden dropdown dropdown-right relative">
 
-                    {/* this is my profile image and dropdown  */}
+                        {/* Trigger */}
+                        <label tabIndex={0} className="btn btn-ghost text-2xl">
+                            <MdOutlineMenu />
+                        </label>
+
+                        {/* Menu */}
+                        <ul className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box mt-3 w-52 p-2 shadow right-0">
+                            <li>
+                                <button className="bg-white text-purple-600 py-2 rounded-lg text-xl font-semibold">
+                                    Profile
+                                </button>
+                            </li>
+
+                            <li>
+                                <button
+                                    onClick={handleSignOut}
+                                    className="bg-white text-purple-600 py-2 rounded-lg text-xl font-semibold"
+                                >
+                                    Logout
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    {/* Logo */}
                     <div>
-                        {
-                            user &&
+
+                        <h1 className="text-3xl font-bold">SkillSphere</h1>
+                    </div>
+
+                    {/* Desktop Links */}
+                    <div className="hidden md:flex space-x-4 text-[16px] font-medium">
+                        <Link href="/">Home</Link>
+                        <Link href="/AllCourses">All Courses</Link>
+                        <Link href="/MyProfile">My Profile</Link>
+                    </div>
+
+                    {/* Right Side */}
+                    <div className="flex items-center gap-3">
+
+
+
+                        {/* Profile */}
+                        {user && (
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         <Avatar>
                                             <Avatar.Image
-                                            alt = "John Doe"
-                                            src={user?.image}
-                                            referrerPolicy='no-referrer'
+                                                alt="user"
+                                                src={user?.image}
+                                                referrerPolicy="no-referrer"
                                             />
-                                            <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
+                                            <AvatarFallback>
+                                                {user?.name?.charAt(0)}
+                                            </AvatarFallback>
                                         </Avatar>
                                     </div>
                                 </div>
-                                {/* user profile  */}
-                                <ul
-                                    tabIndex="-1"
-                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                                    <li>
-                                        <a className="justify-between">
-                                            Profile
 
-                                        </a>
-                                    </li>
-                                    <li><a>Settings</a></li>
-                                    <li><span onClick={handleSignOut}>LogOut</span></li>
+                                <ul className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box mt-3 w-52 p-2 shadow">
+                                    <li><button
+                                        className="bg-white text-purple-600 py-2 rounded-lg text-xl font-semibold"
+                                    >
+                                        Profile
+                                    </button></li>
+
+                                    <li><button
+                                        onClick={handleSignOut}
+                                        className="bg-white text-purple-600 py-2 rounded-lg text-xl font-semibold"
+                                    >
+                                        Logout
+                                    </button></li>
                                 </ul>
+                            </div>
+                        )}
 
-                            </div>
-                        }
-                    </div>
-                    {/* login and sign out  */}
-                    <div>
-                        {
-                            !user &&
-                            <div className='flex gap-1.5'>
-                                <Link href="./SignIn">
-                                    <Button variant='outline' className="text-[#4f46e5]">Log In</Button>
+                        {/* Login Buttons */}
+                        {!user && (
+                            <div className="flex gap-2">
+                                <Link href="/SignIn">
+                                    <Button variant="outline" className="text-indigo-600">
+                                        Log In
+                                    </Button>
                                 </Link>
-                                <Link href="./SignUp"> <Button variant='outline' className="text-[#4f46e5]">Sigh UP</Button></Link>
+                                <Link href="/SignUp">
+                                    <Button variant="outline" className="text-indigo-600">
+                                        Sign Up
+                                    </Button>
+                                </Link>
                             </div>
-                        }
+                        )}
                     </div>
                 </div>
             </div>
-        </div>
+
+        </>
     );
 };
 

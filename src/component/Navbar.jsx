@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -60,19 +60,19 @@ const Navbar = () => {
 
                             {
                                 !user && (
-                            <div className="flex flex-col gap-5">
-                                <Link href="/SignIn">
-                                    <Button variant="outline" className="text-indigo-600">
-                                        Log In
-                                    </Button>
-                                </Link>
-                                <Link href="/SignUp">
-                                    <Button variant="outline" className="text-indigo-600">
-                                        Sign Up
-                                    </Button>
-                                </Link>
-                            </div>
-                        )
+                                    <div className="flex flex-col gap-5">
+                                        <Link href="/SignIn">
+                                            <Button variant="outline" className="text-indigo-600">
+                                                Log In
+                                            </Button>
+                                        </Link>
+                                        <Link href="/SignUp">
+                                            <Button variant="outline" className="text-indigo-600">
+                                                Sign Up
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                )
                             }
                         </ul>
                     </div>
@@ -87,10 +87,22 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Links */}
-                    <div className="hidden md:flex space-x-4 text-[16px] font-medium">
+                    <div className="hidden md:flex text-[16px] font-medium">
                         <Link href="/">Home</Link>
-                        <Link href="/AllCourses">All Courses</Link>
-                        <Link href="/MyProfile">My Profile</Link>
+                        {user && (
+                            <div>
+                                <Link href="/AllCourses" className="mx-4">All Courses</Link>
+                                <Link href="/MyProfile">My Profile</Link>
+                            </div>
+                        )}
+
+                        {!user && (
+                            <div>
+                                <Link href="/SignIn" className="mx-4">All Courses</Link>
+                                <Link href="/SignIn">My Profile</Link>
+                            </div>
+                        )}
+
                     </div>
 
                     {/* Right Side */}

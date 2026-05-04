@@ -1,10 +1,16 @@
+"use client"
+import { authClient } from '@/lib/auth-client';
 import { Rocket } from '@gravity-ui/icons';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { TiMediaPlay } from 'react-icons/ti';
 
 const Banner = () => {
+
+    const userData = authClient.useSession();
+        const user = userData.data?.user;
     return (
         <div className=' w-[80%] mx-auto my-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-2xl'>
             <div className='flex flex-col gap-5 md:flex-row md:space-x-6  p-5'>
@@ -18,10 +24,28 @@ const Banner = () => {
                             Take your Career to the Next Level
                         </p>
 
-                        <div className='flex flex-col justify-center space-y-3.5 md:flex-row md:space-x-3.5'>
+                        {
+                            user && (
+                                <div className='flex flex-col justify-center space-y-3.5 md:flex-row md:space-x-3.5'>
+                            <Link href="/AllCourses">
                             <Button variant='outline' className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700">Explore Course</Button>
+                            </Link>
                             <Button variant='outline' className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700"> <TiMediaPlay /> Watch Demo</Button>
                         </div>
+                            )
+                        }
+
+                        
+                        {
+                            !user && (
+                                <div className='flex flex-col justify-center space-y-3.5 md:flex-row md:space-x-3.5'>
+                            <Link href="/SignIn">
+                            <Button variant='outline' className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700">Explore Course</Button>
+                            </Link>
+                            <Button variant='outline' className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700"> <TiMediaPlay /> Watch Demo</Button>
+                        </div>
+                            )
+                        }
                     </div>
                 </div>
 

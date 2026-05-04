@@ -1,4 +1,5 @@
 "use client"
+import { UpdateProfile } from '@/component/UpdateProfile';
 import { authClient } from '@/lib/auth-client';
 import { Avatar, AvatarFallback, Card } from '@heroui/react';
 import React from 'react';
@@ -19,6 +20,8 @@ const MyProfile = () => {
                 </Avatar>
                 <h2 className='text-xl font-bold'>{user?.name}</h2>
                 <h2 className='text-muted'>{user?.email}</h2>
+
+                <UpdateProfile></UpdateProfile>
             </Card>
 
 

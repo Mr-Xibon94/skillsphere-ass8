@@ -11,6 +11,7 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import Link from "next/link";
 import { GrGoogle } from "react-icons/gr";
 
 export default function SignIpPage() {
@@ -31,7 +32,7 @@ export default function SignIpPage() {
         console.log({ data, error })
     };
 
-    const handleGoogleSignIn =async () =>{
+    const handleGoogleSignIn = async () => {
         await authClient.signIn.social({
             provider: 'google'
         })
@@ -39,6 +40,8 @@ export default function SignIpPage() {
 
     return (
         <Card className="border mx-auto w-125 py-10 my-5">
+            <Button onClick={handleGoogleSignIn} className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700 w-full"> <GrGoogle /> Login With Google</Button>
+
             <h1 className="text-center text-2xl font-bold">Sign In</h1>
 
             <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
@@ -89,18 +92,23 @@ export default function SignIpPage() {
                     <FieldError />
                 </TextField>
 
-                <div className="flex gap-2">
-                    <Button type="submit">
+                <div className="flex flex-col gap-5">
+                    <Button type="submit" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700 w-full">
                         <Check />
                         Submit
                     </Button>
-                    <Button type="reset" variant="secondary">
-                        Reset
-                    </Button>
+
                 </div>
+                <p className="text-center">or</p>
+                <Link href="/SignUp">
+                <Button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700 w-full">
+                    Create new account
+                </Button>
+                </Link>
+                
             </Form>
-            <p>Or</p>
-            <Button onClick={handleGoogleSignIn}> <GrGoogle/> Login With Google</Button>
+            
+            
         </Card>
     );
 }

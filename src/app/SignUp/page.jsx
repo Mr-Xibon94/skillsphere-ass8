@@ -1,5 +1,5 @@
 "use client";
-import { authClient } from "@/lib/auth-client"; 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
     Button,
@@ -11,6 +11,7 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function SignUp() {
@@ -24,7 +25,7 @@ export default function SignUp() {
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name , email, password) 
+        console.log(name, email, password)
         const { data, error } = await authClient.signUp.email({
             name,
             email,
@@ -48,7 +49,7 @@ export default function SignUp() {
                     <FieldError />
                 </TextField>
 
-               
+
                 <TextField
                     isRequired
                     name="email"
@@ -94,14 +95,17 @@ export default function SignUp() {
                 </TextField>
 
                 <div className="flex gap-2">
-                    <Button variant="outline" type="submit">
+                    <Button variant="outline" type="submit" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700 w-full">
                         <Check />
                         Submit
                     </Button>
-                    <Button type="reset" variant="secondary">
-                        Reset
-                    </Button>
                 </div>
+                <p className="text-center text-muted">Already have an Account?</p>
+                <Link href="/SignIn">
+                    <Button variant="outline" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-800 hover:to-pink-700 w-full">
+                        Log In
+                    </Button>
+                </Link>
             </Form>
         </Card>
     );

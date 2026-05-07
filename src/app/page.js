@@ -2,6 +2,7 @@
 import Banner from "@/component/Banner";
 import LearningTips from "@/component/LearningTips";
 import PopularCourses from "@/component/PopularCourses";
+import TopInstructors from "@/component/TopInstructors";
 
 
 const HomePage = () => {
@@ -10,6 +11,7 @@ const HomePage = () => {
       <Banner/>
      <PopularCourses/>
      <LearningTips/>
+     <TopInstructors/>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, AvatarFallback, Button } from "@heroui/react";
 import { MdOutlineMenu } from "react-icons/md";
+import Image from "next/image";
 
 
 const Navbar = () => {
@@ -81,9 +82,20 @@ const Navbar = () => {
 
 
                     {/* Logo */}
-                    <div>
+                    <div className="flex items-center gap-2">
 
-                        <h1 className="text-3xl font-bold">SkillSphere</h1>
+                        <div className='relative w-10 h-10 bg-white rounded-full' >
+                            <Image
+                                src="https://i.ibb.co.com/6Jsjqfbg/Chat-GPT-Image-May-4-2026-10-32-57-PM-removebg-preview.png"
+                                alt='logo'
+                                fill
+                                className='object-cover'
+                            />
+                        </div>
+
+
+
+                        <h1 className="text-3xl font-bold">Skill<span className="text-[#f38200]">Sphere</span> </h1>
                     </div>
 
                     {/* Desktop Links */}

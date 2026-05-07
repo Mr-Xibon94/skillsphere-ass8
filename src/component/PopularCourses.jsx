@@ -1,9 +1,14 @@
 
+import { Button } from '@heroui/react';
 import AllCourseCard from './AllCourseCards';
+import VisitAllCourses from './VisitAllCourses';
+
 
 const PopularCourses = async () => {
     const res = await fetch('https://skillsphere-server-irgj.onrender.com/data')
     const courses = await res.json()
+
+
 
     const popularCourses = courses.slice(0, 3)
     return (
@@ -17,7 +22,13 @@ const PopularCourses = async () => {
                     )
                 }
             </div>
-            
+
+            <div className='flex justify-end'>
+
+                <VisitAllCourses />
+
+            </div>
+
         </div>
     );
 };

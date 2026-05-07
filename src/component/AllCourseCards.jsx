@@ -8,7 +8,7 @@ import { FcRating } from "react-icons/fc";
 const AllCourseCard = ({ course }) => {
     
     return (
-        <Card className="border rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
+        <Card className=" rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
             <div className="relative aspect-square w-full rounded-xl">
                 <Image
                 src={course.image}

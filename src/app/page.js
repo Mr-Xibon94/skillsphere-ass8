@@ -1,5 +1,6 @@
 
 import Banner from "@/component/Banner";
+import LearningTips from "@/component/LearningTips";
 import PopularCourses from "@/component/PopularCourses";
 
 
@@ -8,6 +9,7 @@ const HomePage = () => {
     <div>
       <Banner/>
      <PopularCourses/>
+     <LearningTips/>
     </div>
   );
 };
